@@ -50,8 +50,8 @@ class FeeControllerTest {
         val content = mvcResult.response.contentAsString
         val apiResult = gson.fromJson<ApiResponse<Fee>>(content, type)
 
-        assertThat(apiResult.data).isNull()
-        assertThat(apiResult.status).isEqualTo(ResponseStatus.ERROR.code)
+        assertThat(apiResult.data).isNotNull
+        assertThat(apiResult.status).isEqualTo(ResponseStatus.OK.code)
     }
 
     @Test

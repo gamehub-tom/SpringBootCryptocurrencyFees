@@ -29,10 +29,10 @@ class FeeServiceImplTest {
     @Test
     fun ethereumFees() {
         val result = feeService.fees(coinType = CoinType.ETH)
-        assertThat(result.isFailure).isTrue()
+        assertThat(result.isSuccess).isTrue()
 
         val fee = result.getOrNull()
-        assertThat(fee).isNull()
+        assertThat(fee).isNotNull
     }
 
     @Test
