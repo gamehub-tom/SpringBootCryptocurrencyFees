@@ -28,10 +28,4 @@ class FeeServiceImpl: FeeService {
         Fee(slow = this.hourFee, normal = this.halfHourFee, fast = this.fastestFee)
     }
 
-//    override fun ethFees(): Result<Fee> = Result.failure(RuntimeException("Not implementation: ETH Fees"))
-//
-//    override fun plyFees(): Result<Fee> = Result.failure(RuntimeException("Not implementation: PLY Fees"))
-//
-//    override fun plxFees(): Result<Fee> = Result.failure(RuntimeException("Not implementation: PLX Fees"))
-
 }

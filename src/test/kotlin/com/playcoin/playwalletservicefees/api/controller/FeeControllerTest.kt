@@ -98,4 +98,11 @@ class FeeControllerTest {
         assertThat(apiResult.data).isNull()
         assertThat(apiResult.status).isEqualTo(ResponseStatus.ERROR.code)
     }
+
+    @Test
+    fun anythingFees() {
+        mockMvc
+            .perform(get("/XRP/fees").accept(MediaType.APPLICATION_JSON))
+            .andExpect(status().is4xxClientError)
+    }
 }
