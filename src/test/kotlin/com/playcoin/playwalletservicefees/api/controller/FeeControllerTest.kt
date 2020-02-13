@@ -25,10 +25,9 @@ class FeeControllerTest {
     val gson: Gson = GsonBuilder().create()
 
     @Test
-    fun fees() {
-
+    fun bitcoinFees() {
         val mvcResult = mockMvc
-            .perform(get("/fees").accept(MediaType.APPLICATION_JSON))
+            .perform(get("/BTC/fees").accept(MediaType.APPLICATION_JSON))
             .andExpect(status().isOk)
             .andReturn()
 
@@ -38,5 +37,65 @@ class FeeControllerTest {
 
         assertThat(apiResult.data).isNotNull
         assertThat(apiResult.status).isEqualTo(ResponseStatus.OK.code)
+    }
+
+    @Test
+    fun ethereumFees() {
+        val mvcResult = mockMvc
+            .perform(get("/ETH/fees").accept(MediaType.APPLICATION_JSON))
+            .andExpect(status().isOk)
+            .andReturn()
+
+        val type = object : TypeToken<ApiResponse<Fee>>() {}.type
+        val content = mvcResult.response.contentAsString
+        val apiResult = gson.fromJson<ApiResponse<Fee>>(content, type)
+
+        assertThat(apiResult.data).isNull()
+        assertThat(apiResult.status).isEqualTo(ResponseStatus.ERROR.code)
+    }
+
+    @Test
+    fun playcoinFees() {
+        val mvcResult = mockMvc
+            .perform(get("/PLY/fees").accept(MediaType.APPLICATION_JSON))
+            .andExpect(status().isOk)
+            .andReturn()
+
+        val type = object : TypeToken<ApiResponse<Fee>>() {}.type
+        val content = mvcResult.response.contentAsString
+        val apiResult = gson.fromJson<ApiResponse<Fee>>(content, type)
+
+        assertThat(apiResult.data).isNull()
+        assertThat(apiResult.status).isEqualTo(ResponseStatus.ERROR.code)
+    }
+
+    @Test
+    fun playcoinxFees() {
+        val mvcResult = mockMvc
+            .perform(get("/PLX/fees").accept(MediaType.APPLICATION_JSON))
+            .andExpect(status().isOk)
+            .andReturn()
+
+        val type = object : TypeToken<ApiResponse<Fee>>() {}.type
+        val content = mvcResult.response.contentAsString
+        val apiResult = gson.fromJson<ApiResponse<Fee>>(content, type)
+
+        assertThat(apiResult.data).isNull()
+        assertThat(apiResult.status).isEqualTo(ResponseStatus.ERROR.code)
+    }
+
+    @Test
+    fun dummyFees() {
+        val mvcResult = mockMvc
+            .perform(get("/DMY/fees").accept(MediaType.APPLICATION_JSON))
+            .andExpect(status().isOk)
+            .andReturn()
+
+        val type = object : TypeToken<ApiResponse<Fee>>() {}.type
+        val content = mvcResult.response.contentAsString
+        val apiResult = gson.fromJson<ApiResponse<Fee>>(content, type)
+
+        assertThat(apiResult.data).isNull()
+        assertThat(apiResult.status).isEqualTo(ResponseStatus.ERROR.code)
     }
 }
