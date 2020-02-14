@@ -24,6 +24,7 @@ class FeeServiceImplTest {
 
         val fee = result.getOrNull()
         assertThat(fee).isNotNull
+        assertThat(fee?.gasLimit).isNull()
     }
 
     @Test
@@ -33,24 +34,27 @@ class FeeServiceImplTest {
 
         val fee = result.getOrNull()
         assertThat(fee).isNotNull
+        assertThat(fee?.gasLimit).isNotNull()
     }
 
     @Test
     fun playcoinFees() {
         val result = feeService.fees(coinType = CoinType.PLY)
-        assertThat(result.isFailure).isTrue()
+        assertThat(result.isSuccess).isTrue()
 
         val fee = result.getOrNull()
-        assertThat(fee).isNull()
+        assertThat(fee).isNotNull
+        assertThat(fee?.gasLimit).isNotNull()
     }
 
     @Test
     fun playcoinxFees() {
         val result = feeService.fees(coinType = CoinType.PLX)
-        assertThat(result.isFailure).isTrue()
+        assertThat(result.isSuccess).isTrue()
 
         val fee = result.getOrNull()
-        assertThat(fee).isNull()
+        assertThat(fee).isNotNull
+        assertThat(fee?.gasLimit).isNotNull()
     }
 
     @Test
@@ -60,5 +64,6 @@ class FeeServiceImplTest {
 
         val fee = result.getOrNull()
         assertThat(fee).isNull()
+        assertThat(fee?.gasLimit).isNull()
     }
 }
