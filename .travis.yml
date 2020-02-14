@@ -1,0 +1,15 @@
+language: kotlin
+jdk:
+  - openjdk8
+
+branches:
+  only:
+    - develop
+    - master
+
+cache:
+  directories:
+    - '$HOME/.m2/repository'
+    - '$HOME/.gradle'
+
+script: "./gradlew clean build"
