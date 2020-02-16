@@ -27,6 +27,5 @@ class EthereumFeesClientImplTest {
         Assertions.assertThat(res.safeLow).isNotNull()
         Assertions.assertThat(res.gasPriceRange).isNotNull
         Assertions.assertThat(res.gasPriceRange.r4).isNotNull()
-        Assertions.assertThat(res.gasPriceRange.r180).isNotNull()
     }
 }

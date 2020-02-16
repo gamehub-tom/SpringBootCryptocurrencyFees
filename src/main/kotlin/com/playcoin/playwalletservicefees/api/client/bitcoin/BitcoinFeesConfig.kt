@@ -5,8 +5,8 @@ import org.springframework.stereotype.Component
 
 @Component
 class BitcoinFeesConfig(
-    @Value("https://bitcoinfees.earn.com")
+    @Value("\${gamehub.bitcoin.host}")
     val host: String,
-    @Value("0")
+    @Value("\${gamehub.bitcoin.port}")
     val port: Int
 )
