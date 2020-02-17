@@ -13,13 +13,10 @@ import java.math.RoundingMode
 import kotlin.math.max
 
 @Service
-class FeeServiceImpl: FeeService {
-
-    @Autowired
-    lateinit var bitcoinFeesClient: BitcoinFeesClient
-
-    @Autowired
-    lateinit var ethereumFeesClient: EthereumFeesClient
+class FeeServiceImpl(
+        @Autowired val bitcoinFeesClient: BitcoinFeesClient,
+        @Autowired val ethereumFeesClient: EthereumFeesClient
+): FeeService {
 
     override fun fees(coinType: CoinType): Result<Fee> = kotlin.run {
         when(coinType) {

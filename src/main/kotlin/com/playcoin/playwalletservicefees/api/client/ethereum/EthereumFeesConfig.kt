@@ -5,8 +5,8 @@ import org.springframework.stereotype.Component
 
 @Component
 class EthereumFeesConfig(
-    @Value("https://ethgasstation.info")
+    @Value("\${gamehub.ethereum.host}")
     val host: String,
-    @Value("0")
+    @Value("\${gamehub.ethereum.port}")
     val port: Int
 )

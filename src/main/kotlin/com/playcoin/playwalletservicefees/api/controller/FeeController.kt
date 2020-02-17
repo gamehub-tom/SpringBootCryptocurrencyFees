@@ -9,10 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-class FeeController {
-
-    @Autowired
-    lateinit var feeService: FeeService
+class FeeController(@Autowired val feeService: FeeService) {
 
     @GetMapping("/{coinType}/fees")
     fun btcFees(@PathVariable coinType: CoinType): FeeResponse

@@ -13,6 +13,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.http.MediaType
 import org.springframework.test.web.servlet.MockMvc
+import org.springframework.test.web.servlet.get
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 
@@ -26,10 +27,11 @@ class FeeControllerTest {
 
     @Test
     fun bitcoinFees() {
-        val mvcResult = mockMvc
-            .perform(get("/BTC/fees").accept(MediaType.APPLICATION_JSON))
-            .andExpect(status().isOk)
-            .andReturn()
+        val mvcResult = mockMvc.get("/BTC/fees") {
+            accept(MediaType.APPLICATION_JSON)
+        }.andExpect {
+            this.status { isOk }
+        }.andReturn()
 
         val type = object : TypeToken<ApiResponse<Fee>>() {}.type
         val content = mvcResult.response.contentAsString
@@ -41,10 +43,11 @@ class FeeControllerTest {
 
     @Test
     fun ethereumFees() {
-        val mvcResult = mockMvc
-            .perform(get("/ETH/fees").accept(MediaType.APPLICATION_JSON))
-            .andExpect(status().isOk)
-            .andReturn()
+        val mvcResult = mockMvc.get("/ETH/fees") {
+            accept(MediaType.APPLICATION_JSON)
+        }.andExpect {
+            this.status { isOk }
+        }.andReturn()
 
         val type = object : TypeToken<ApiResponse<Fee>>() {}.type
         val content = mvcResult.response.contentAsString
@@ -56,10 +59,11 @@ class FeeControllerTest {
 
     @Test
     fun playcoinFees() {
-        val mvcResult = mockMvc
-            .perform(get("/PLY/fees").accept(MediaType.APPLICATION_JSON))
-            .andExpect(status().isOk)
-            .andReturn()
+        val mvcResult = mockMvc.get("/PLY/fees") {
+            accept(MediaType.APPLICATION_JSON)
+        }.andExpect {
+            this.status { isOk }
+        }.andReturn()
 
         val type = object : TypeToken<ApiResponse<Fee>>() {}.type
         val content = mvcResult.response.contentAsString
@@ -71,10 +75,11 @@ class FeeControllerTest {
 
     @Test
     fun playcoinxFees() {
-        val mvcResult = mockMvc
-            .perform(get("/PLX/fees").accept(MediaType.APPLICATION_JSON))
-            .andExpect(status().isOk)
-            .andReturn()
+        val mvcResult = mockMvc.get("/PLX/fees") {
+            accept(MediaType.APPLICATION_JSON)
+        }.andExpect {
+            this.status { isOk }
+        }.andReturn()
 
         val type = object : TypeToken<ApiResponse<Fee>>() {}.type
         val content = mvcResult.response.contentAsString
@@ -86,10 +91,11 @@ class FeeControllerTest {
 
     @Test
     fun dummyFees() {
-        val mvcResult = mockMvc
-            .perform(get("/DMY/fees").accept(MediaType.APPLICATION_JSON))
-            .andExpect(status().isOk)
-            .andReturn()
+        val mvcResult = mockMvc.get("/DMY/fees") {
+            accept(MediaType.APPLICATION_JSON)
+        }.andExpect {
+            this.status { isOk }
+        }.andReturn()
 
         val type = object : TypeToken<ApiResponse<Fee>>() {}.type
         val content = mvcResult.response.contentAsString
